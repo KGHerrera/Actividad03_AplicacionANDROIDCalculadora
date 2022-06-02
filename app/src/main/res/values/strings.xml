@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Actividad03_AplicaciónANDROID[Calculadora]</string>
+    <string name="str_calculadora">Calculadora</string>
+
+    <string name="str_1">1</string>
+    <string name="str_2">2</string>
+    <string name="str_3">3</string>
+    <string name="str_4">4</string>
+    <string name="str_5">5</string>
+    <string name="str_6">6</string>
+    <string name="str_7">7</string>
+    <string name="str_8">8</string>
+    <string name="str_9">9</string>
+    <string name="str_0">0</string>
+
+    <string name="str_multiplicacion">*</string>
+    <string name="str_divicion">/</string>
+    <string name="str_suma">+</string>
+    <string name="str_resta">-</string>
+    <string name="str_igual">=</string>
+    <string name="str_punto">.</string>
+    <string name="str_c">C</string>
+    <string name="str_ce">Ce</string>
+    <string name="str_del">x</string>
+    <string name="str_mas_menos">+-</string>
+
+    <string name="str_sqrt">sqrt</string>
+    <string name="str_elevado">x^2</string>
+
+
+</resources>
