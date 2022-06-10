@@ -14,16 +14,16 @@ import javax.script.ScriptEngineManager;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private String resultado = "none";
+    private EditText cajaResultado;
+    private String numero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        EditText e1 = findViewById(R.id.caja_resultado);
-        e1.setEnabled(false);
+        cajaResultado = findViewById(R.id.caja_resultado);
+        cajaResultado.setEnabled(false);
     }
 
     public void btnCero(View v){
@@ -58,38 +58,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verificarNumero(String numeroAgregar){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
 
-        if(numero.equals("0") || numero.contains("a") || numero.contains("e") || numero.contains("i")) e1.setText(numeroAgregar);
-        else if (numero.equals("-0")) e1.setText(numero.replace("0", numeroAgregar));
-        else e1.setText(numero + numeroAgregar);
+        numero = cajaResultado.getText().toString();
+        if(numero.equals("0") || numero.contains("a") || numero.contains("e") || 
+                numero.contains("i")) cajaResultado.setText(numeroAgregar);
+        else if (numero.equals("-0")) cajaResultado.setText(numero.replace("0", numeroAgregar));
+        else cajaResultado.setText(numero + numeroAgregar);
     }
 
-    public void btnC(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        e1.setText("0");
+    public void btnC(View v) {
+        cajaResultado.setText("0");
         resultado = "none";
     }
 
     public void btnPunto(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
+        numero = cajaResultado.getText().toString();
 
-        if(!numero.contains(".")) e1.setText(numero + ".");
+        if(!numero.contains(".")) cajaResultado.setText(numero + ".");
     }
 
     public void btnDel(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
-
+        numero = cajaResultado.getText().toString();
         if (numero.length()>1){
-            e1.setText(numero.substring(0, numero.length()-1));
-            if (e1.getText().toString().equals("-")){
-                e1.setText("0");
+            cajaResultado.setText(numero.substring(0, numero.length()-1));
+            if (cajaResultado.getText().toString().equals("-")){
+                cajaResultado.setText("0");
             }
         } else{
-            e1.setText("0");
+            cajaResultado.setText("0");
         }
     }
 
@@ -107,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnMasMenos(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
+
+        numero = cajaResultado.getText().toString();
 
         if (numero.contains("-")){
             numero = numero.replace("-","");
@@ -118,44 +114,39 @@ public class MainActivity extends AppCompatActivity {
         if (numero.equals("-0")){
             numero = numero.replace("-", "");
         }
-        e1.setText(numero);
+        cajaResultado.setText(numero);
     }
 
     public void btnSqrt(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
+        numero = cajaResultado.getText().toString();
 
         try{
             numero = String.valueOf(Math.sqrt(Double.parseDouble(numero)));
-            e1.setText(numero);
+            cajaResultado.setText(numero);
         } catch (Exception e){
-            e1.setText("Syntax error");
+            cajaResultado.setText("Syntax error");
         }
     }
 
     public void btnElevado(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
+        numero = cajaResultado.getText().toString();
         numero = String.valueOf(Math.pow(Double.parseDouble(numero), 2));
-        e1.setText(numero);
-
+        cajaResultado.setText(numero);
     }
 
     public void encadenarOperaciones(String operador){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
+        numero = cajaResultado.getText().toString();
         if(resultado.equals("none")){
             resultado = numero + operador;
         } else{
             resultado = resultado + numero + operador;
         }
-        e1.setText("0");
+        cajaResultado.setText("0");
 
     }
 
     public void btnIgual(View v){
-        EditText e1 = findViewById(R.id.caja_resultado);
-        String numero = e1.getText().toString();
+        numero = cajaResultado.getText().toString();
 
         if (!resultado.equals("none")){
             resultado = resultado + numero;
@@ -169,11 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 resultado2 = "Syntax error";
                 resultado = "none";
             }
-            e1.setText(resultado2);
+            cajaResultado.setText(resultado2);
         }
     }
-
-
-
-
 }
